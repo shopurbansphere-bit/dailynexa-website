@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Today's Key – DailyNexa</title>
+  <meta name="description" content="Get your free daily access key. Valid for one calendar day." />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="logo">Daily<span>Nexa</span></a>
+      <nav class="nav">
+        <a href="/articles/">Articles</a>
+        <a href="/get-key.html">Get Key</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:32px;padding-bottom:40px">
+    <!-- Top ad -->
+    <div class="ad-slot banner">Ad Placement – Top Banner</div>
+
+    <!-- STEP 1: Landing -->
+    <div id="step1" class="card">
+      <h1 class="step-title">Get Today's Key</h1>
+      <p class="step-desc">
+        Your daily access key is free. It is valid for one calendar day and automatically expires at midnight (Asia/Kolkata timezone).
+      </p>
+      <ul style="margin:0 0 24px 20px;color:var(--muted)">
+        <li>One key per day</li>
+        <li>Works with the authorized app</li>
+        <li>No registration required</li>
+      </ul>
+      <button class="btn btn-primary btn-block btn-lg" onclick="goToStep2()">Continue</button>
+    </div>
+
+    <!-- STEP 2: Countdown -->
+    <div id="step2" class="card hidden">
+      <h1 class="step-title">Preparing your key...</h1>
+      <p class="step-desc">Please wait a few seconds while we prepare today's key.</p>
+
+      <div class="countdown" id="countdown">15</div>
+
+      <!-- Ad during wait -->
+      <div class="ad-slot square">Ad Placement – During Countdown</div>
+
+      <p class="muted text-center" style="font-size:0.85rem">
+        This short wait helps us keep the service free.
+      </p>
+    </div>
+
+    <!-- STEP 3: Final Key -->
+    <div id="step3" class="card hidden">
+      <h1 class="step-title">Your Daily Key</h1>
+      <p class="step-desc">Copy the key below and paste it in the app.</p>
+
+      <div class="key-box">
+        <div class="muted" style="font-size:0.85rem">Today's Key</div>
+        <div class="key-value" id="keyValue">Loading...</div>
+        <button class="btn btn-primary copy-btn" onclick="copyKey()">Copy Key</button>
+      </div>
+
+      <div class="ad-slot">Ad Placement – Key Page</div>
+
+      <p class="muted text-center mt-2" id="keyMeta"></p>
+
+      <div class="mt-4 text-center">
+        <a href="/" class="btn btn-secondary">Back to Home</a>
+      </div>
+    </div>
+
+    <!-- Error state -->
+    <div id="errorBox" class="card hidden" style="border-color:#7f1d1d">
+      <h1 class="step-title" style="color:#fca5a5">Unable to load key</h1>
+      <p class="step-desc" id="errorMsg">Something went wrong. Please try again later.</p>
+      <button class="btn btn-primary btn-block" onclick="location.reload()">Try Again</button>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+    </div>
+    <p style="margin-top:12px">© 2026 DailyNexa</p>
+  </footer>
+
+  <script>
+    // ========== CONFIG ==========
+    // After you deploy the backend, put the full URL here
+    // Example: https://your-api.onrender.com
+    const API_BASE = 'https://YOUR-API.onrender.com';  // ← CHANGE THIS AFTER DEPLOY
+
+    let currentKey = '';
+
+    function goToStep2() {
+      document.getElementById('step1').classList.add('hidden');
+      document.getElementById('step2').classList.remove('hidden');
+      startCountdown(15);
+    }
+
+    function startCountdown(seconds) {
+      const el = document.getElementById('countdown');
+      let remaining = seconds;
+      el.textContent = remaining;
+
+      const timer = setInterval(() => {
+        remaining--;
+        el.textContent = remaining;
+        if (remaining <= 0) {
+          clearInterval(timer);
+          loadKey();
+        }
+      }, 1000);
+    }
+
+    async function loadKey() {
+      document.getElementById('step2').classList.add('hidden');
+
+      try {
+        const res = await fetch(API_BASE + '/api/today-key');
+        const data = await res.json();
+
+        if (data.success && data.key) {
+          showKey(data.key, data.expiresAt);
+        } else {
+          showError(data.message || 'No active key for today. Please try again later.');
+        }
+      } catch (err) {
+        showError('Network error. Please check your connection and try again.');
+      }
+    }
+
+    function showKey(key, expiresAt) {
+      currentKey = key;
+      document.getElementById('keyValue').textContent = key;
+      if (expiresAt) {
+        const d = new Date(expiresAt);
+        document.getElementById('keyMeta').textContent =
+          'Valid until ' + d.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+      }
+      document.getElementById('step3').classList.remove('hidden');
+    }
+
+    function showError(msg) {
+      document.getElementById('errorMsg').textContent = msg;
+      document.getElementById('errorBox').classList.remove('hidden');
+    }
+
+    function copyKey() {
+      if (!currentKey) return;
+      navigator.clipboard.writeText(currentKey).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      }).catch(() => {
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = currentKey;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert('Key copied!');
+      });
+    }
+  </script>
+</body>
+</html>
