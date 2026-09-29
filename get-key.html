@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get Today's Access Key – DailyNexa</title>
-  <meta name="description" content="Generate your secure daily authentication key for DailyNexa supported software." />
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
@@ -18,92 +17,75 @@
     </div>
   </header>
 
-  <main class="container" style="padding-top:32px;padding-bottom:40px">
-    <!-- Top ad -->
-    <div class="ad-slot banner">Ad Placement – Top Banner</div>
-
-    <div style="display: grid; grid-template-columns: 1fr; gap: 24px;">
+  <main class="container">
+    <div class="key-flow-container">
       
-      <!-- MAIN KEY FLOW -->
-      <div>
-        <!-- STEP 1: Landing -->
-        <div id="step1" class="card" style="border-top: 4px solid var(--primary);">
-          <h1 class="step-title">Authentication Portal</h1>
-          <p class="step-desc">
-            Generate your secure, 24-hour access key for supported applications. Keys reset daily at midnight (IST).
-          </p>
-          <button class="btn btn-primary btn-block btn-lg" onclick="goToStep2()">Generate Today's Key</button>
+      <!-- MASSIVE TOP AD BANNER -->
+      <div class="ad-slot banner">Ad Placement – Top Leaderboard</div>
+
+      <!-- STEP 1: Landing -->
+      <div id="step1" class="card" style="border-top: 4px solid var(--primary);">
+        <h1 class="step-title">Authentication Portal</h1>
+        <p class="step-desc">Generate your secure, 24-hour access key for supported applications. Keys reset daily at midnight (IST).</p>
+        <button class="btn btn-primary btn-block btn-lg" onclick="goToStep2()">Generate Today's Key</button>
+      </div>
+
+      <!-- STEP 2: Countdown -->
+      <div id="step2" class="card hidden">
+        <h1 class="step-title">Securing Connection...</h1>
+        <p class="step-desc">Please wait while we generate a unique session token.</p>
+        
+        <div class="countdown" id="countdown">15</div>
+        
+        <!-- MASSIVE SQUARE AD DURING WAIT -->
+        <div class="ad-slot square">Ad Placement – Massive Square Ad (350px)</div>
+      </div>
+
+      <!-- STEP 3: Final Key -->
+      <div id="step3" class="card hidden" style="border-color: var(--success);">
+        <h1 class="step-title">Authentication Successful</h1>
+        <p class="step-desc">Your secure daily key has been generated.</p>
+
+        <div class="key-box">
+          <div class="muted" style="font-size:0.85rem">Unique Device Key</div>
+          <div class="key-value" id="keyValue">Loading...</div>
+          <button class="btn btn-primary btn-block" onclick="copyKey()">Copy to Clipboard</button>
         </div>
 
-        <!-- STEP 2: Countdown -->
-        <div id="step2" class="card hidden">
-          <h1 class="step-title">Securing Connection...</h1>
-          <p class="step-desc">Please wait while we generate a unique session token for your device.</p>
-
-          <div class="countdown" id="countdown">15</div>
-
-          <!-- Ad during wait -->
-          <div class="ad-slot square">Ad Placement – During Countdown</div>
-
-          <p class="muted text-center" style="font-size:0.85rem">
-            This brief wait allows our servers to verify request limits and keep the platform free.
-          </p>
-        </div>
-
-        <!-- STEP 3: Final Key -->
-        <div id="step3" class="card hidden" style="border-color: var(--success);">
-          <h1 class="step-title">Authentication Successful</h1>
-          <p class="step-desc">Your secure daily key has been generated.</p>
-
-          <div class="key-box">
-            <div class="muted" style="font-size:0.85rem">Unique Device Key</div>
-            <div class="key-value" id="keyValue">Loading...</div>
-            <button class="btn btn-primary copy-btn" onclick="copyKey()">Copy to Clipboard</button>
-          </div>
-
-          <div class="ad-slot">Ad Placement – Key Page</div>
-
-          <p class="muted text-center mt-2" id="keyMeta"></p>
-
-          <div class="mt-4 text-center">
-            <a href="/" class="btn btn-secondary">Return to Articles</a>
-          </div>
-        </div>
-
-        <!-- Error state -->
-        <div id="errorBox" class="card hidden" style="border-color:#7f1d1d">
-          <h1 class="step-title" style="color:#fca5a5">Connection Error</h1>
-          <p class="step-desc" id="errorMsg">Unable to reach the authentication server.</p>
-          <button class="btn btn-primary btn-block" onclick="location.reload()">Retry Connection</button>
+        <p class="muted text-center" id="keyMeta"></p>
+        
+        <div class="mt-4 text-center" style="margin-top: 24px;">
+          <a href="/" class="btn btn-secondary btn-block">Return to Articles</a>
         </div>
       </div>
 
-      <!-- TEXT CONTENT FOR ADSENSE COMPLIANCE -->
-      <div class="card" style="background: #12121a;">
+      <!-- Error state -->
+      <div id="errorBox" class="card hidden" style="border-color:#ef4444">
+        <h1 class="step-title" style="color:#fca5a5">Connection Error</h1>
+        <p class="step-desc" id="errorMsg">Unable to reach the authentication server.</p>
+        <button class="btn btn-primary btn-block" onclick="location.reload()">Retry Connection</button>
+      </div>
+
+      <!-- Adsense Compliance Text -->
+      <div class="card" style="background: transparent; border: none; margin-top: 32px; padding: 0;">
         <h2 style="font-size: 1.1rem; margin-bottom: 12px;">About This Tool</h2>
-        <p class="muted" style="font-size: 0.9rem; margin-bottom: 12px;">
-          The DailyNexa access portal utilizes a dynamic, 13-character cryptographic token system to ensure secure daily logins. By limiting keys to a 24-hour lifecycle, we prevent unauthorized credential sharing and maintain server stability.
-        </p>
-        <p class="muted" style="font-size: 0.9rem;">
-          <strong>Instructions:</strong> Simply click generate, wait for the secure handshake to complete, and copy the resulting `DNX` format key into your application's verification prompt. No personal data or registration is required.
-        </p>
+        <p class="muted" style="font-size: 0.9rem;">By limiting keys to a 24-hour lifecycle, we prevent unauthorized credential sharing and maintain server stability. Simply click generate, wait for the secure handshake, and copy the `DNX` key into your application.</p>
       </div>
 
     </div>
   </main>
 
   <footer class="footer">
-    <div>
+    <div class="footer-links">
       <a href="/about.html">About</a>
       <a href="/privacy.html">Privacy</a>
       <a href="/terms.html">Terms</a>
       <a href="/disclaimer.html">Disclaimer</a>
     </div>
-    <p style="margin-top:12px">© 2026 DailyNexa</p>
+    <p>© 2026 DailyNexa</p>
   </footer>
 
   <script>
-    // ========== CONFIG ==========
     const API_BASE = 'https://dailynexa-api.onrender.com';  
 
     let currentKey = '';
@@ -131,7 +113,6 @@
 
     async function loadKey() {
       document.getElementById('step2').classList.add('hidden');
-
       try {
         const res = await fetch(API_BASE + '/api/today-key');
         const data = await res.json();
@@ -165,10 +146,9 @@
     function copyKey() {
       if (!currentKey) return;
       navigator.clipboard.writeText(currentKey).then(() => {
-        const btn = document.querySelector('.copy-btn');
-        const original = btn.textContent;
-        btn.textContent = 'Copied to Clipboard!';
-        setTimeout(() => { btn.textContent = original; }, 2000);
+        const btns = document.querySelectorAll('.btn-primary');
+        btns[1].textContent = 'Copied to Clipboard!';
+        setTimeout(() => { btns[1].textContent = 'Copy to Clipboard'; }, 2000);
       }).catch(() => {
         const ta = document.createElement('textarea');
         ta.value = currentKey;
