@@ -13,7 +13,7 @@
       <a href="/" class="logo">Daily<span>Nexa</span></a>
       <nav class="nav">
         <a href="/">Articles</a>
-        <a href="/get-key.html" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">Access Portal</a>
+        <a href="/get-key.html">Get Key</a>
       </nav>
     </div>
   </header>
@@ -25,98 +25,82 @@
     </section>
 
     <div class="container">
-      <div class="ad-slot banner">Ad Placement – Top Leaderboard</div>
+      
+      <!-- MASSIVE TOP AD BANNER -->
+      <div class="ad-slot banner">Ad Placement – Top Leaderboard (250px Height)</div>
 
-      <div class="layout-grid">
+      <!-- Article Grid (Takes full width now that sidebar is gone) -->
+      <div class="article-grid">
         
-        <!-- Main Content: Articles -->
-        <div class="main-content">
-          <div class="article-grid">
-            
-            <!-- Article 1 -->
-            <a href="/articles/what-is-cloud-computing.html" class="card">
-              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Cloud Data" class="card-img">
-              <div class="card-content">
-                <span class="badge">Cloud Tech</span>
-                <h3>What Is Cloud Computing? A Beginner's Guide</h3>
-                <p>Learn the basics of cloud infrastructure, how it works, and why it is essential for modern mobile applications.</p>
-                <div class="card-footer">
-                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80" alt="Author" class="author-avatar">
-                  <div class="author-info">
-                    <span class="author-name">David Chen</span> • Sept 28, 2026
-                  </div>
-                </div>
+        <!-- Article 1 -->
+        <a href="/articles/what-is-cloud-computing.html" class="card article-card">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Cloud Data" class="card-img">
+          <div class="card-content">
+            <span class="badge">Cloud Tech</span>
+            <h3>What Is Cloud Computing? A Beginner's Guide</h3>
+            <p>Learn the basics of cloud infrastructure, how it works, and why it is essential for modern applications.</p>
+            <div class="card-footer">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80" alt="Author" class="author-avatar">
+              <div class="author-info">
+                <span class="author-name">David Chen</span> • Sept 28, 2026
               </div>
-            </a>
-
-            <!-- Article 2 -->
-            <a href="/articles/two-factor-authentication.html" class="card">
-              <img src="https://images.unsplash.com/photo-1614064641913-6b7140414f25?auto=format&fit=crop&w=600&q=80" alt="Security Lock" class="card-img">
-              <div class="card-content">
-                <span class="badge">Security</span>
-                <h3>Why Two-Factor Authentication is Essential in 2026</h3>
-                <p>Protect your digital life. Discover how cryptographic tokens add a critical layer of security to personal data.</p>
-                <div class="card-footer">
-                  <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80" alt="Author" class="author-avatar">
-                  <div class="author-info">
-                    <span class="author-name">Sarah Jenkins</span> • Sept 26, 2026
-                  </div>
-                </div>
-              </div>
-            </a>
-
-            <!-- Article 3 -->
-            <a href="/articles/ssd-vs-hdd.html" class="card">
-              <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=600&q=80" alt="Hardware Setup" class="card-img">
-              <div class="card-content">
-                <span class="badge">Hardware</span>
-                <h3>SSD vs HDD: Which Storage Fits Your Workflow?</h3>
-                <p>A detailed technical breakdown of solid-state and hard disk drives, analyzing speed, lifespan, and overall cost efficiency.</p>
-                <div class="card-footer">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Author" class="author-avatar">
-                  <div class="author-info">
-                    <span class="author-name">Marcus Reed</span> • Sept 24, 2026
-                  </div>
-                </div>
-              </div>
-            </a>
-
-            <!-- Article 4 -->
-            <a href="/articles/benefits-of-meditation.html" class="card">
-              <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&w=600&q=80" alt="Digital Wellness" class="card-img">
-              <div class="card-content">
-                <span class="badge">Digital Wellness</span>
-                <h3>Digital Detox: Balancing Screen Time & Health</h3>
-                <p>How strict app blockers and enforced digital boundaries can dramatically reduce fatigue and improve your focus.</p>
-                <div class="card-footer">
-                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Author" class="author-avatar">
-                  <div class="author-info">
-                    <span class="author-name">Elena Rostova</span> • Sept 22, 2026
-                  </div>
-                </div>
-              </div>
-            </a>
-
+            </div>
           </div>
-          
-          <div class="ad-slot banner">Ad Placement – In-Feed Native Ad</div>
-        </div>
+        </a>
 
-        <!-- Sidebar / Widget Area -->
-        <aside class="sidebar">
-          <div class="widget-tool">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 16px;">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-            </svg>
-            <h3 style="font-size: 1.4rem; margin-bottom: 8px;">DailyNexa Access</h3>
-            <p class="muted" style="font-size: 0.95rem; margin-bottom: 24px;">Generate your secure, 24-hour cryptographic token to unlock supported mobile applications.</p>
-            <a href="/get-key.html" class="btn btn-primary btn-block">Generate Key Now</a>
-            <p style="font-size: 0.75rem; color: #555; margin-top: 16px;">Keys reset at 00:00 IST • No login required</p>
+        <!-- Article 2 -->
+        <a href="/articles/two-factor-authentication.html" class="card article-card">
+          <img src="https://images.unsplash.com/photo-1614064641913-6b7140414f25?auto=format&fit=crop&w=600&q=80" alt="Security Lock" class="card-img">
+          <div class="card-content">
+            <span class="badge">Security</span>
+            <h3>Why Two-Factor Authentication is Essential in 2026</h3>
+            <p>Protect your digital life. Discover how cryptographic tokens add a critical layer of security to personal data.</p>
+            <div class="card-footer">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80" alt="Author" class="author-avatar">
+              <div class="author-info">
+                <span class="author-name">Sarah Jenkins</span> • Sept 26, 2026
+              </div>
+            </div>
           </div>
-        </aside>
+        </a>
+
+        <!-- Article 3 -->
+        <a href="/articles/ssd-vs-hdd.html" class="card article-card">
+          <img src="https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=600&q=80" alt="Hardware Setup" class="card-img">
+          <div class="card-content">
+            <span class="badge">Hardware</span>
+            <h3>SSD vs HDD: Which Storage Fits Your Workflow?</h3>
+            <p>A detailed technical breakdown of solid-state and hard disk drives, analyzing speed, lifespan, and cost efficiency.</p>
+            <div class="card-footer">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Author" class="author-avatar">
+              <div class="author-info">
+                <span class="author-name">Marcus Reed</span> • Sept 24, 2026
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Article 4 -->
+        <a href="/articles/benefits-of-meditation.html" class="card article-card">
+          <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&w=600&q=80" alt="Digital Wellness" class="card-img">
+          <div class="card-content">
+            <span class="badge">Digital Wellness</span>
+            <h3>Digital Detox: Balancing Screen Time & Health</h3>
+            <p>How strict app blockers and enforced digital boundaries can dramatically reduce fatigue and improve your focus.</p>
+            <div class="card-footer">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Author" class="author-avatar">
+              <div class="author-info">
+                <span class="author-name">Elena Rostova</span> • Sept 22, 2026
+              </div>
+            </div>
+          </div>
+        </a>
 
       </div>
+      
+      <!-- MASSIVE BOTTOM AD BANNER -->
+      <div class="ad-slot banner">Ad Placement – Bottom Banner (250px Height)</div>
+      
     </div>
   </main>
 
